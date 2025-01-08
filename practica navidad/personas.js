@@ -1,0 +1,42 @@
+export const personas = [
+  {
+    id: 1,
+    nombre: "Ana",
+    edad: 28,
+    ocupacion: "Ingeniera",
+    pais: "México",
+    intereses: ["correr", "lectura", "viajar"],
+  },
+  {
+    id: 2,
+    nombre: "Juan",
+    edad: 34,
+    ocupacion: "Doctor",
+    pais: "Argentina",
+    intereses: ["fútbol", "cocina", "cine"],
+  },
+  {
+    id: 3,
+    nombre: "Laura",
+    edad: 22,
+    ocupacion: "Estudiante",
+    pais: "España",
+    intereses: ["fotografía", "música", "videojuegos"],
+  },
+  {
+    id: 4,
+    nombre: "Carlos",
+    edad: 41,
+    ocupacion: "Profesor",
+    pais: "Colombia",
+    intereses: ["historia", "ajedrez", "montañismo"],
+  },
+  {
+    id: 5,
+    nombre: "Sofía",
+    edad: 30,
+    ocupacion: "Diseñadora",
+    pais: "Chile",
+    intereses: ["arte", "diseño", "moda"],
+  },
+];

@@ -1,0 +1,33 @@
+body {
+  background-color: rgba(128, 128, 128, 0.312);
+}
+
+/* #app {
+  margin: 80px auto;
+  width: 40px;
+  min-height: 40px;
+  background-color: black;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}
+
+.bombilla {
+  margin: 20px;
+  width: 50%;
+  height: 160px;
+  background-color: rgba(128, 128, 128, 0.461);
+  border-radius: 50%;
+}
+
+.rojo {
+  background-color: red;
+}
+.naranja {
+  background-color: orange;
+}
+.verde {
+  background-color: green;
+} */
