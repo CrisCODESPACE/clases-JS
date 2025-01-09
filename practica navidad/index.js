@@ -215,4 +215,67 @@ function ordenarArr(arr) {
   return arr.sort((a, b) => a - b);
 }
 
-console.log(ordenarArr([1, 34, 654, 2, 0, -1]));
+// console.log(ordenarArr([1, 34, 654, 2, 0, -1]));
+
+// 1. Filtrar personas mayores de 30 años.
+
+function filtrarPorEdad(personas) {
+  return personas.filter((objeto) => objeto.edad > 30);
+}
+
+console.log(filtrarPorEdad(personas));
+
+// 2. Obtener un array con los nombres de todas las personas.
+
+function obtenerNombres(personas) {
+  return personas.map((persona) => persona.nombre);
+}
+console.log(obtenerNombres(personas));
+
+let resultado = personas.map(({ nombre, edad }) => ({ nombre, edad }));
+console.log(resultado);
+
+// 3. Encontrar la primera persona que sea estudiante.
+
+function encontrarEstudiante(personas) {
+  return personas.find((persona) => persona.ocupacion === "Estudiante");
+}
+
+console.log(encontrarEstudiante(personas));
+
+// 4. Sumar las edades de todas las personas.
+
+function todasEdades(personas) {
+  return personas.reduce(
+    (accumulator, currentValue) => accumulator + currentValue.edad,
+    0
+  );
+}
+
+console.log(todasEdades(personas));
+
+// 5. Crear un array con los nombres de personas cuyo país sea "España".
+
+let espanoles = personas.filter((objeto) => {
+  return objeto.pais.toLowerCase() === "españa";
+});
+
+console.log(espanoles);
+
+function nombresEspana(personas) {
+  return personas
+    .filter((persona) => persona.pais === "España")
+    .map((persona) => persona.nombre);
+}
+
+console.log(nombresEspana(personas));
+
+// 6. Agregar un nuevo interés a todas las personas.
+
+personas.forEach((objeto) => {
+  objeto.intereses.push("dormir");
+});
+
+personas.forEach((objeto) => {
+  console.log(objeto.intereses);
+});
