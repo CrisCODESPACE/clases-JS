@@ -1,0 +1,38 @@
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+#app {
+  background-color: #111;
+  padding: 3em 5em;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 2em;
+
+  .card-container {
+    background-color: #444;
+    width: 45%;
+    height: auto;
+
+    .film-poster {
+      width: 100%;
+      height: auto;
+    }
+
+    .film-title {
+      color: azure;
+    }
+
+    .film-overview {
+      color: azure;
+    }
+
+    .film-rating {
+      color: blue;
+      font-weight: bold;
+    }
+  }
+}
