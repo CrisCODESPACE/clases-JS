@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vite App</title>
+  </head>
+  <body>
+    <h1>CRUD EXAMPLE</h1>
+    <div>
+      <h2>Crear nuevo recurso</h2>
+      <input
+        type="text"
+        id="new-title"
+        placeholder="Introduce el nuevo titulo"
+      />
+      <input
+        type="text"
+        id="new-body"
+        placeholder="Introduce el nuevo contenido"
+      />
+      <button id="create-button">Crear</button>
+    </div>
+    <div>
+      <h2>RECURSOS</h2>
+      <div id="resource-list"></div>
+    </div>
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>
