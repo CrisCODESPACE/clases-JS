@@ -75,6 +75,7 @@ async function createProduct(productData) {
 
     const result = await response.json();
     console.log("Created product:", result);
+    addProductToDOM(result);
   } catch (error) {
     console.error("Error creating product:", error);
   }
@@ -131,7 +132,7 @@ async function deleteProduct(id) {
     const data = await response.json();
     console.log("Deleted product", data);
 
-    removeProductFromDisplay(id);
+    removeProductFromDOM(id);
   } catch (error) {
     console.error("Error deleting product:", error);
   }
@@ -160,11 +161,54 @@ function displayProducts(products) {
 
     const editButton = document.createElement("button");
     editButton.textContent = "Edit";
-    editButton.addEventListener("click", () => console.log("Editar"));
+    editButton.addEventListener("click", () =>
+      showEditForm(
+        product.id,
+        product.title,
+        product.price,
+        product.description,
+        product.image,
+        product.category
+      )
+    );
     productElement.appendChild(editButton);
 
     productsContainer.appendChild(productElement);
   });
+}
+
+// funcion para mostrar el nuevo producto añadido
+
+function addProductToDOM(product) {
+  const productsContainer = document.getElementById("productsContainer");
+  const productElement = document.createElement("div");
+  //   productElement.id = `product-${product.id}`;
+  productElement.innerHTML = `
+        <h2>${product.title}</h2>
+        <p>${product.description}</p>
+        <p>Price: ${product.price}€</p>
+        <img src="${product.image}" alt="${product.title}" width="100">`;
+
+  const deleteButton = document.createElement("button");
+  deleteButton.textContent = "Delete";
+  deleteButton.addEventListener("click", () => deleteProduct(product.id));
+  productElement.appendChild(deleteButton);
+
+  const editButton = document.createElement("button");
+  editButton.textContent = "Edit";
+  editButton.addEventListener("click", () =>
+    showEditForm(
+      product.id,
+      product.title,
+      product.price,
+      product.description,
+      product.image,
+      product.category
+    )
+  );
+  productElement.appendChild(editButton);
+
+  productsContainer.appendChild(productElement);
 }
 
 // funcion manejadora que añade nuevo producto
@@ -182,14 +226,53 @@ document
     };
 
     const newProduct = await createProduct(productData);
-    displayProducts(newProduct);
   });
+
+// funcion manejadora de editar un producto
+
+function showEditForm(id, title, price, description, image, category) {
+  const editForm = document.createElement("form");
+  editForm.innerHTML = `
+    <h2>Editing product</h2>
+        <label for="title">Title:</label>
+      <input type="text" name="title" id="title" value="${title}" required />
+      <br />
+      <label for="price">Price:</label>
+      <input type="number" name="price" id="price" value="${price}" required />
+      <br />
+      <label for="description">Description:</label>
+      <input type="textarea" name="description" id="description" value="${description}" required />
+      <br />
+      <label for="image">Image URL:</label>
+      <input type="text" name="image" id="image" value="${image}" required />
+      <br />
+      <label for="category">Category:</label>
+      <input type="text" name="category" id="category" value="${category}" required />
+      <br />
+      <button type="submit">Add product</button>
+      <button type="reset">Reset</button>`;
+
+  editForm.addEventListener("submit", async (event) => {
+    event.preventDefault();
+    const updatedFields = {
+      title: event.target.title.value,
+      price: event.target.price.value,
+      description: event.target.description.value,
+      image: event.target.image.value,
+      category: event.target.category.value,
+    };
+
+    await updateProduct(id, updatedFields);
+  });
+
+  document.body.appendChild(editForm);
+}
 
 //------------DOM------------------------------
 
 // funcion manejadora eliminacion de elemento del DOM
 
-function removeProductFromDisplay(id) {
+function removeProductFromDOM(id) {
   const productItem = document.getElementById(`product-${id}`);
 
   if (productItem) {
